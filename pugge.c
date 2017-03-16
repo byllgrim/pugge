@@ -1,7 +1,7 @@
-int
-main(void)
+int main(void)
 {
-	/* TODO:
+	/*
+	 * TODO:
 	 * Open and parse files.
 	 * Take answer choice as input.
 	 * Present correct answer.
