@@ -1,10 +1,13 @@
 CC = cc
+CFLAGS = -Os -pedantic-errors -std=c89 -Wall -Wextra
+
 TARG = pugge
-OBJ = ${TARG}.o
+SRC = ${TARG}.c #foo.c bar.c
+OBJ = ${SRC:.c=.o}
 
 all: ${TARG}
 
-${TARG}: ${OBJ} #May fail when new .c files are added
+${TARG}: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 .c.o:
