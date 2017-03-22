@@ -1,5 +1,9 @@
-int main(void)
+#include "file_handling.h"
+
+int
+main(int argc, char *args[])
 {
+	parse_files(args + 1);
 	/*
 	 * TODO:
 	 * Open and parse files.
