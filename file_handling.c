@@ -1,7 +1,9 @@
 #include "pugge.h"
 
-struct node /* TODO rename type */
-parse_files(char **files) /* TODO consider char *files[] */
+struct question *
+parse_files(char **files)
 {
+	(void)files; /* TODO implement function */
 
+	return (void*)0; /* TODO implement function */
 }

@@ -1,17 +1,12 @@
-struct question;
-union data {
-    struct question q;
-    char *s;
-};
-
-struct node {
-    struct node next;
+struct choice {
+	char          *text;
+	char           right;
+	struct choice *next;
 };
 
 struct question {
-    char *text;
-    char *answer;
-    struct node first;
-    struct node last;
-    /* TODO initialize variables */
+	char            *text;
+	struct choice   *choices;
+	struct question *next;
+	/* TODO initialize variables? */
 };
