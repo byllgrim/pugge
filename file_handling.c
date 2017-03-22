@@ -1,3 +1,5 @@
+/* This code is licensed under the Unlicense; see LICENSE for details. */
+
 #include "pugge.h"
 
 struct question *
