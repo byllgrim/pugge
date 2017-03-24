@@ -11,10 +11,8 @@ main(int argc, char **argv)
 	parse_all_files(argv + 1);
 	/*
 	 * TODO:
-	 * Open and parse files.
 	 * Take answer choice as input.
 	 * Present correct answer.
-	 * Take multiple files as argument.
 	 * Optional randomization of question order.
 	 * Randomization of choice order.
 	 * Allow for variable number of answer choices.
