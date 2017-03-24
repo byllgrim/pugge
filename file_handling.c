@@ -4,7 +4,6 @@
 
 #include "pugge.h"
 #include "util.h"
-/* TODO should include file_handling.h? */
 
 struct question *parse_file(char *filename, struct question *q);
 struct question *parse_line(char *line, struct question *q);
@@ -13,18 +12,16 @@ struct question *
 parse_all_files(char **files)
 {
 	int i;
-	struct question *first_question, *last_question;
-	/* TODO rename first_q? */
+	struct question *first, *last;
 
-	first_question = calloc(1, sizeof(first_question));
-	last_question = first_question;
-	if (!first_question)
+	first = last = calloc(1, sizeof(first));
+	if (!first)
 		kill_program("parse_all_files: calloc failed\n");
 
-	for (i=0; files[i]; i++)
-		last_question = parse_file(files[i], last_question);
+	for (i = 0; files[i]; i++)
+		last = parse_file(files[i], last);
 
-	return first_question;
+	return first;
 }
 
 struct question *
@@ -37,9 +34,9 @@ parse_file(char *filename, struct question *q)
 	if (!file)
 		kill_program("file not found: %s\n", filename);
 
-	buffer = calloc(MAX_LEN, sizeof(char)); /* TODO MAXLEN + 1 ? */
+	buffer = calloc(MAX_LEN, sizeof(char));
 	while (fgets(buffer, MAX_LEN, file))
-		q = parse_line(buffer, q); /* TODO remove newline? */
+		q = parse_line(buffer, q);
 
 	free(buffer);
 	return (void*)0;
@@ -48,7 +45,7 @@ parse_file(char *filename, struct question *q)
 struct question *
 parse_line(char *line, struct question *q)
 {
-	printf("TODO parse: %s", line); /* TODO implement function */
+	printf("TODO parse: %s", line);
 
 	return q;
 }
