@@ -1,4 +1,3 @@
 /* needs pugge.h */
 
-struct question *
-parse_files(char **files);
+struct question *parse_all_files(char **files);
