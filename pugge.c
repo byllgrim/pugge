@@ -8,7 +8,7 @@ main(int argc, char **argv)
 {
 	(void)argc; /* TODO usage function */
 
-	parse_files(argv + 1);
+	parse_all_files(argv + 1);
 	/*
 	 * TODO:
 	 * Open and parse files.

@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Os -pedantic-errors -std=c89 -Wall -Wextra
 
 TARG = pugge
-SRC = ${TARG}.c file_handling.c
+SRC = ${TARG}.c file_handling.c util.c
 OBJ = ${SRC:.c=.o}
 
 all: ${TARG}
