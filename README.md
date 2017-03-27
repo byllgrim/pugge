@@ -1,6 +1,11 @@
 # pugge
-Flashcards for the terminal
+Flashcard program for the terminal (WIP).
 
+Questions and answers are specified in a very simple plain-text format.
+Multiple files may be loaded and randomized.
+Try the demo file or make your own.
+
+## Why?
 The need for flashcards arose because of a multiple choice test.
 I want a simple format and minimalistic interface.
 Also, I wanted to hone my C skills.
