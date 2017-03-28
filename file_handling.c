@@ -45,6 +45,9 @@ parse_file(char *filename, struct question *q)
 struct question *
 parse_line(char *line, struct question *q)
 {
+	if(line[0] == '#')
+		return q;
+	
 	printf("TODO parse: %s", line);
 
 	return q;
