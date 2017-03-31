@@ -48,19 +48,26 @@ parse_line(char *line, struct question *q)
 {
 	size_t len;
 
-	if(line[0] == '#')
+	if (line[0] == '#') /* comment lines begin with # */
 		return q;
 
-	if(line[0] == '\n' && !q->text)
-		return q;
+	if (line[0] == '\n') {
+		if (!q->text)
+			return q; /* no question found yet */
+		/* else */
+			/* TODO create new question */
+	}
 
-	if(!q->text){
+	if (!q->text) {
 		len = strlen(line);
-		q->text = calloc(len+1, sizeof(char));
-		/*TODO test calloc*/
+		q->text = calloc(len + 1, sizeof(char));
+		if (!q->text)
+			kill_program("calloc failed: %s\n", line);
+
 		strncpy(q->text, line, len);
 		return q;
-	}
+	} /* else */
+		/* append_choice(q, line) */
 
 	printf("TODO parse: %s", line);
 
