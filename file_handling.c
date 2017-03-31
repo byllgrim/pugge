@@ -8,6 +8,7 @@
 
 struct question *parse_file(char *filename, struct question *q);
 struct question *parse_line(char *line, struct question *q);
+void set_question_text(char *src, struct question *q); /* TODO export? */
 
 struct question *
 parse_all_files(char **files)
@@ -46,8 +47,6 @@ parse_file(char *filename, struct question *q)
 struct question *
 parse_line(char *line, struct question *q)
 {
-	size_t len;
-
 	if (line[0] == '#') /* comment lines begin with # */
 		return q;
 
@@ -59,17 +58,25 @@ parse_line(char *line, struct question *q)
 	}
 
 	if (!q->text) {
-		len = strlen(line);
-		q->text = calloc(len + 1, sizeof(char));
-		if (!q->text)
-			kill_program("calloc failed: %s\n", line);
-
-		strncpy(q->text, line, len);
-		return q;
+		set_question_text(line, q);
+		return q; /* TODO this is temporary */
 	} /* else */
 		/* append_choice(q, line) */
 
 	printf("TODO parse: %s", line);
 
 	return q;
+}
+
+void
+set_question_text(char *src, struct question *q)
+{
+	size_t len;
+
+	len = strlen(src);
+	q->text = calloc(len + 1, sizeof(char));
+	if (!q->text)
+		kill_program("calloc failed: %s\n", src);
+
+	strncpy(q->text, src, len); /* TODO check return value? */
 }
