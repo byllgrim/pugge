@@ -47,23 +47,20 @@ parse_file(char *filename, struct question *q)
 struct question *
 parse_line(char *line, struct question *q)
 {
-	if (line[0] == '#') /* comment lines begin with # */
+	if (line[0] == '#') /* ignore comment lines beginning with # */
 		return q;
 
 	if (line[0] == '\n') {
-		if (!q->text)
-			return q; /* no question found yet */
-		/* else */
-			/* TODO create new question */
+		if (q->text) /* current question is completed */
+			printf("TODO start new question\n");
+		else
+			return q; /* question text not started yet */
 	}
 
-	if (!q->text) {
+	if (!q->text)
 		set_question_text(line, q);
-		return q; /* TODO this is temporary */
-	} /* else */
-		/* append_choice(q, line) */
-
-	printf("TODO parse: %s", line);
+	else
+		printf("TODO append_choice(q, %s", line);
 
 	return q;
 }
@@ -79,4 +76,5 @@ set_question_text(char *src, struct question *q)
 		kill_program("calloc failed: %s\n", src);
 
 	strncpy(q->text, src, len); /* TODO check return value? */
+	/* TODO don't copy \n  */
 }
