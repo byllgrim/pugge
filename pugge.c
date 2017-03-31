@@ -2,11 +2,13 @@
 
 #include "pugge.h" /* must be first of the local includes */
 #include "file_handling.h"
+#include "util.h"
 
 int
 main(int argc, char **argv)
 {
-	(void)argc; /* TODO usage function */
+	if (argc <= 1)
+		kill_program("usage: %s <file> ...\n", argv[0]);
 
 	parse_all_files(argv + 1);
 
