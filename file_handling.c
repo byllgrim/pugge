@@ -1,6 +1,7 @@
 /* This code is licensed under the Unlicense; see LICENSE for details. */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "pugge.h"
 #include "util.h"
@@ -45,6 +46,22 @@ parse_file(char *filename, struct question *q)
 struct question *
 parse_line(char *line, struct question *q)
 {
+	size_t len;
+
+	if(line[0] == '#')
+		return q;
+
+	if(line[0] == '\n' && !q->text)
+		return q;
+
+	if(!q->text){
+		len = strlen(line);
+		q->text = calloc(len+1, sizeof(char));
+		/*TODO test calloc*/
+		strncpy(q->text, line, len);
+		return q;
+	}
+
 	printf("TODO parse: %s", line);
 
 	return q;

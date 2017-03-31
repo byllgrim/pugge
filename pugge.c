@@ -17,7 +17,6 @@ main(int argc, char **argv)
 	 * Randomization of choice order.
 	 * Allow for variable number of answer choices.
 	 * Allow #comments in question file.
-	 * Make a demo file.
 	 * Allow "Don't know" as an option?
 	 */
 
