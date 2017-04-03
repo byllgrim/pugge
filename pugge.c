@@ -7,7 +7,7 @@
 int
 main(int argc, char **argv)
 {
-	if (argc <= 1)
+	if (argc < 2)
 		kill_program("usage: %s <file> ...\n", argv[0]);
 
 	parse_all_files(argv + 1);
