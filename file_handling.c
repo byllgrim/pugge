@@ -6,9 +6,9 @@
 #include "pugge.h"
 #include "util.h"
 
-struct question *parse_file(char *filename, struct question *q);
-struct question *parse_line(char *line, struct question *q);
-void set_question_text(char *src, struct question *q); /* TODO export? */
+static struct question *parse_file(char *filename, struct question *q);
+static struct question *parse_line(char *line, struct question *q);
+static void             set_question_text(char *src, struct question *q);
 
 struct question *
 parse_all_files(char **files)
@@ -77,4 +77,5 @@ set_question_text(char *src, struct question *q)
 
 	strncpy(q->text, src, len); /* TODO check return value? */
 	/* TODO don't copy \n  */
+	/* TODO export this function? */
 }
