@@ -47,16 +47,18 @@ parse_line(char *line, struct question *q)
 		return q;
 
 	if (line[0] == '\n') {
-		if (q->text) /* current question is completed */
-			printf("TODO start new question\n");
-		else
-			return q; /* question text not started yet */
+		if (q->text) { /* current question is done */
+			q->next = xcalloc(1, sizeof(q));
+			return q->next; /* TODO combine lines */
+		} else {
+			return q; /* waiting for question */
+		}
 	}
 
 	if (!q->text)
 		set_question_text(line, q);
 	else
-		printf("TODO append_choice(q, '%s'", line);
+		append_choice(line, q);
 
 	return q;
 }

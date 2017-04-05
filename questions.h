@@ -13,3 +13,4 @@ struct choice { /* TODO rename answer? */
 };
 
 void set_question_text(char *src, struct question *q);
+void append_choice(char *line, struct question *q);
