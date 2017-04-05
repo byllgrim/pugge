@@ -6,8 +6,9 @@
 #include "pugge.h"
 #include "util.h"
 
-struct question *parse_file(char *filename, struct question *q);
-struct question *parse_line(char *line, struct question *q);
+static struct question *parse_file(char *filename, struct question *q);
+static struct question *parse_line(char *line, struct question *q);
+static void             set_question_text(char *src, struct question *q);
 
 struct question *
 parse_all_files(char **files)
@@ -44,22 +45,33 @@ parse_file(char *filename, struct question *q)
 struct question *
 parse_line(char *line, struct question *q)
 {
-	size_t len;
-
-	if(line[0] == '#')
+	if (line[0] == '#') /* ignore comment lines beginning with # */
 		return q;
 
-	if(line[0] == '\n' && !q->text)
-		return q;
-
-	if(!q->text){
-		len = strlen(line);
-		q->text = xcalloc(len+1, sizeof(char));
-		strncpy(q->text, line, len);
-		return q;
+	if (line[0] == '\n') {
+		if (q->text) /* current question is completed */
+			printf("TODO start new question\n");
+		else
+			return q; /* question text not started yet */
 	}
 
-	printf("TODO parse: %s", line);
+	if (!q->text)
+		set_question_text(line, q);
+	else
+		printf("TODO append_choice(q, %s", line);
 
 	return q;
+}
+
+void
+set_question_text(char *src, struct question *q)
+{
+	size_t len;
+
+	len = strlen(src);
+	q->text = xcalloc(len + 1, sizeof(char));
+
+	strncpy(q->text, src, len); /* TODO check return value? */
+	/* TODO don't copy \n  */
+	/* TODO export this function? */
 }
