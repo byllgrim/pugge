@@ -56,7 +56,7 @@ parse_line(char *line, struct question *q)
 	if (!q->text)
 		set_question_text(line, q);
 	else
-		append_choice(line, q);
+		append_answer(line, q);
 
 	return q;
 }

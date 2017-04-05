@@ -17,20 +17,20 @@ set_question_text(char *src, struct question *q)
 }
 
 void
-append_choice(char *src, struct question *q)
+append_answer(char *src, struct question *q)
 {
-	struct choice *c;
+	struct answer *a;
 	size_t len;
 
-	if (!q->choices)
-		q->choices = xcalloc(1, sizeof(q->choices));
+	if (!q->answers)
+		q->answers = xcalloc(1, sizeof(q->answers));
 
-	for (c = q->choices; c->text; c = c->next)
-		if (!c->next)
-			c->next = xcalloc(1, sizeof(q->choices));
+	for (a = q->answers; a->text; a = a->next)
+		if (!a->next)
+			a->next = xcalloc(1, sizeof(q->answers));
 
 	len = strlen(src);
-	c->text = xcalloc(len + 1, sizeof(char));
-	strncpy(c->text, src, len); /* TODO check return value? */
+	a->text = xcalloc(len + 1, sizeof(char));
+	strncpy(a->text, src, len); /* TODO check return value? */
 	/* TODO check ! for correct answer */
 }

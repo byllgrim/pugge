@@ -18,13 +18,13 @@ main(int argc, char **argv)
 
 	/*
 	 * TODO:
-	 * Take answer choice as input.
+	 * Take answer number as input.
 	 * Present correct answer.
 	 * Optional randomization of question order.
-	 * Randomization of choice order.
-	 * Allow for variable number of answer choices.
-	 * Allow #comments in answer choice?
-	 * Allow "Don't know" as an option?
+	 * Randomization of answer order.
+	 * Allow for variable number of answers.
+	 * Allow #comments in answer?
+	 * Allow "Don't know" as an answer?
 	 */
 
 	return 0;
