@@ -14,18 +14,14 @@ main(int argc, char **argv)
 		kill_program("usage: %s <file> ...\n", argv[0]);
 
 	q = parse_all_files(argv + 1);
-	(void)q; /* TODO present as answers */
+	(void)q; /* TODO present all Q n A */
 
-	/*
-	 * TODO:
-	 * Take answer number as input.
-	 * Present correct answer.
-	 * Optional randomization of question order.
-	 * Randomization of answer order.
-	 * Allow for variable number of answers.
-	 * Allow #comments in answer?
-	 * Allow "Don't know" as an answer?
-	 */
+	/* TODO take answer number as input */
+	/* TODO present correct answer */
+	/* TODO optional randomization of question order */
+	/* TODO randomization of answer order */
+	/* TODO allow #comments in answer text? */
+	/* TODO allow "Don't know" as an answer? */
 
 	return 0;
 }
