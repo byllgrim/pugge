@@ -1,4 +1,5 @@
 /* This code is licensed under the Unlicense; see LICENSE for details. */
+#include <stdlib.h>
 
 #include "pugge.h" /* must be first of the local includes */
 #include "file_handling.h"
