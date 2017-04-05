@@ -25,14 +25,12 @@ append_choice(char *src, struct question *q)
 	if (!q->choices)
 		q->choices = xcalloc(1, sizeof(q->choices));
 
-	for (c = q->choices; c->text; c = c->next) {
+	for (c = q->choices; c->text; c = c->next)
 		if (!c->next)
 			c->next = xcalloc(1, sizeof(q->choices));
-	}
 
 	len = strlen(src);
 	c->text = xcalloc(len + 1, sizeof(char));
-
 	strncpy(c->text, src, len); /* TODO check return value? */
 	/* TODO check ! for correct answer */
 }

@@ -47,12 +47,10 @@ parse_line(char *line, struct question *q)
 		return q;
 
 	if (line[0] == '\n') {
-		if (q->text) { /* current question is done */
-			q->next = xcalloc(1, sizeof(q));
-			return q->next; /* TODO combine lines */
-		} else {
+		if (q->text) /* current question is done */
+			return q->next = xcalloc(1, sizeof(q));
+		else
 			return q; /* waiting for question */
-		}
 	}
 
 	if (!q->text)
