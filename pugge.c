@@ -1,17 +1,20 @@
 /* This code is licensed under the Unlicense; see LICENSE for details. */
 #include <stdlib.h>
 
-#include "pugge.h" /* must be first of the local includes */
-#include "file_handling.h"
-#include "util.h"
+#include "questions.h" /* must be first of the local includes */
+#include "files.h"
+#include "utils.h"
 
 int
 main(int argc, char **argv)
 {
+	struct question *q;
+
 	if (argc < 2)
 		kill_program("usage: %s <file> ...\n", argv[0]);
 
-	parse_all_files(argv + 1);
+	q = parse_all_files(argv + 1);
+	(void)q; /* TODO present as answers */
 
 	/*
 	 * TODO:

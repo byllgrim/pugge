@@ -1,14 +1,12 @@
 /* This code is licensed under the Unlicense; see LICENSE for details. */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-#include "pugge.h"
-#include "util.h"
+#include "questions.h"
+#include "utils.h"
 
 static struct question *parse_file(char *filename, struct question *q);
 static struct question *parse_line(char *line, struct question *q);
-static void             set_question_text(char *src, struct question *q);
 
 struct question *
 parse_all_files(char **files)
@@ -58,20 +56,7 @@ parse_line(char *line, struct question *q)
 	if (!q->text)
 		set_question_text(line, q);
 	else
-		printf("TODO append_choice(q, %s", line);
+		printf("TODO append_choice(q, '%s'", line);
 
 	return q;
-}
-
-void
-set_question_text(char *src, struct question *q)
-{
-	size_t len;
-
-	len = strlen(src);
-	q->text = xcalloc(len + 1, sizeof(char));
-
-	strncpy(q->text, src, len); /* TODO check return value? */
-	/* TODO don't copy \n  */
-	/* TODO export this function? */
 }
