@@ -30,7 +30,13 @@ append_answer(char *src, struct question *q)
 			a->next = xcalloc(1, sizeof(q->answers));
 
 	len = strlen(src);
+
+	if (src[0] == '!'){
+		a->correct = 1;
+		src++;
+		len--;
+	}
+
 	a->text = xcalloc(len + 1, sizeof(char));
 	strncpy(a->text, src, len); /* TODO check return value? */
-	/* TODO check ! for correct answer */
 }
