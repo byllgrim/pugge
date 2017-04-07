@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "questions.h" /* must be first of the local includes */
+#include "answers.h"
 #include "files.h"
 #include "utils.h"
 
@@ -14,7 +15,7 @@ main(int argc, char **argv)
 		kill_program("usage: %s <file> ...\n", argv[0]);
 
 	q = parse_all_files(argv + 1);
-	(void)q; /* TODO present all Q n A */
+	start_quiz(q);
 
 	/* TODO take answer number as input */
 	/* TODO present correct answer */
