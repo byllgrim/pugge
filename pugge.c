@@ -17,12 +17,10 @@ main(int argc, char **argv)
 	q = parse_all_files(argv + 1);
 	start_quiz(q);
 
-	/* TODO take answer number as input */
 	/* TODO present correct answer */
 	/* TODO optional randomization of question order */
 	/* TODO randomization of answer order */
 	/* TODO allow #comments in answer text? */
-	/* TODO allow "Don't know" as an answer? */
 
 	return 0;
 }
