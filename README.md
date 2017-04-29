@@ -3,7 +3,7 @@ Multiple choice program for the terminal (WIP).
 
 Questions and answers are specified in a very simple plain-text format.
 Multiple files may be loaded and randomized.
-Try the demo file or make your own.
+Try the 'demo.mc' file or make your own.
 
 ## Why?
 The need arose because of a multiple choice test at university.
