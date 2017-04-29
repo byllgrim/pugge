@@ -9,10 +9,10 @@ set_question_text(char *src, struct question *q)
 	size_t len;
 
 	len = strlen(src);
-	q->text = xcalloc(len + 1, sizeof(char));
+	q->text = xcalloc(len, sizeof(char));
 
 	strncpy(q->text, src, len); /* TODO check return value? */
-	/* TODO don't copy \n  */
+	q->text[len - 1] = '\0';
 	/* TODO export this function? */
 }
 
@@ -37,6 +37,7 @@ append_answer(char *src, struct question *q)
 		len--;
 	}
 
-	a->text = xcalloc(len + 1, sizeof(char));
+	a->text = xcalloc(len, sizeof(char));
 	strncpy(a->text, src, len); /* TODO check return value? */
+	a->text[len - 1] = '\0';
 }
