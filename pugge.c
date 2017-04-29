@@ -21,6 +21,7 @@ main(int argc, char **argv)
 	/* TODO optional randomization of question order */
 	/* TODO randomization of answer order */
 	/* TODO allow #comments in answer text? */
+	/* TODO print score */
 
 	return 0;
 }

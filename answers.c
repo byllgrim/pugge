@@ -4,7 +4,8 @@
 #include "questions.h"
 #include "utils.h"
 
-static int get_choice(void);
+static int  get_choice(void);
+static void verify_choice(struct question *q, int c);
 
 void
 start_quiz(struct question *q){
@@ -16,7 +17,7 @@ start_quiz(struct question *q){
 		for (i = 1, a = q->answers; a; a = a->next, i++)
 			printf("%d) %s\n", i, a->text);
 		c = get_choice();
-		printf("TODO %d\n", c);
+		verify_choice(q, c);
 	}
 }
 
@@ -27,10 +28,26 @@ get_choice(void)
 	int i;
 
 	s = xcalloc(BUFSIZ + 1, sizeof(*s));
-	printf("Answer: ");
+	printf("Choice: ");
 	fgets(s, BUFSIZ, stdin);
 	i = atoi(s);
 	free(s);
 	return i;
 	/* TODO is this messy? */
+}
+
+void
+verify_choice(struct question *q, int c)
+{
+	while (!c /* TODO || c > max */) {
+		printf("Please choose a valid number\n");
+		c = get_choice();
+	}
+
+	if (get_answer(q, c)->correct)
+		printf("Congratulations!!!!");
+	else
+		printf("The right answer is TODO");
+
+	getchar(); /* press enter to continue */
 }

@@ -41,3 +41,16 @@ append_answer(char *src, struct question *q)
 	strncpy(a->text, src, len); /* TODO check return value? */
 	a->text[len - 1] = '\0';
 }
+
+struct answer *
+get_answer(struct question *q, int n)
+{
+	struct answer *a;
+	int i;
+
+	a = q->answers;
+	for (i = 1; a && i < n; i++)
+		a = a->next;
+
+	return a;
+}
