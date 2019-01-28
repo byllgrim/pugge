@@ -7,15 +7,15 @@
 enum {RDBUFLEN = 512};
 
 struct question {
-	char            *text;    /* text of the question */
-	struct answer   *answers; /* start node of linked list of answers */
-	struct question *next;    /* next question */
+	char *text;
+	struct answer *answers;
+	struct question *next;
 };
 
 struct answer {
-	char          *text;    /* answer text */
-	char           correct; /* true if correct answer */
-	struct answer *next;    /* next answer in linked list */
+	char *text;
+	int correct;
+	struct answer *next;
 };
 
 void
