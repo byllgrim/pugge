@@ -18,7 +18,7 @@ struct answer {
 	struct answer *next;
 };
 
-void
+static void
 kill_program(char *format, ...)
 {
     va_list ap;
@@ -30,7 +30,7 @@ kill_program(char *format, ...)
     exit(EXIT_FAILURE);
 }
 
-void *
+static void *
 xcalloc(size_t n, size_t size)
 {
     void *p;
@@ -45,7 +45,7 @@ xcalloc(size_t n, size_t size)
     return p;
 }
 
-void
+static void
 set_question_text(char *src, struct question *q)
 {
 	size_t len;
@@ -58,7 +58,7 @@ set_question_text(char *src, struct question *q)
 	/* TODO export this function? */
 }
 
-void
+static void
 append_answer(char *src, struct question *q)
 {
 	struct answer *a;
@@ -97,7 +97,7 @@ get_answer(struct question *q, int n)
 	return a;
 }
 
-int
+static int
 get_choice(void)
 {
 	char *s;
@@ -112,7 +112,7 @@ get_choice(void)
 	/* TODO is this messy? */
 }
 
-void
+static void
 verify_choice(struct question *q, int c)
 {
 	while (!c /* TODO || c > max */) {
@@ -128,7 +128,7 @@ verify_choice(struct question *q, int c)
 	getchar(); /* press enter to continue */
 }
 
-void
+static void
 start_quiz(struct question *q){
 	struct answer *a;
 	int i, c;
