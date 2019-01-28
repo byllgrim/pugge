@@ -1,17 +1,7 @@
-CC = cc
 CFLAGS = -Os -pedantic-errors -std=c89 -Wall -Wextra
 
-TARG = pugge
-SRC = ${TARG}.c
-OBJ = ${SRC:.c=.o}
-
-all: ${TARG}
-
-${TARG}: ${OBJ}
-	${CC} -o $@ ${OBJ} ${LDFLAGS}
-
-.c.o:
-	${CC} -c ${CFLAGS} $<
+pugge: pugge.c
+	$(CC) -o $@ $(CFLAGS) $<
 
 clean:
-	rm -f ${OBJ} ${TARG}
+	rm -f pugge
