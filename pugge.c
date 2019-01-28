@@ -110,18 +110,34 @@ get_choice(void)
     return i;
 }
 
+static char *
+get_correct(struct question *q)
+{
+    struct answer *ans;
+
+    for (ans = q->answers; ans; ans = ans->next)
+        if (ans->correct)
+            return ans->text;
+
+    return 0;
+}
+
 static void
 verify_choice(struct question *q, int c)
 {
+    char *ans;
+
     while (!c ) {
         printf("Please choose a valid number\n");
         c = get_choice();
     }
 
-    if (get_answer(q, c)->correct)
+    if (get_answer(q, c)->correct) {
         printf("Congratulations!!!!");
-    else
-        printf("The right answer is TODO");
+    } else {
+        ans = get_correct(q);
+        printf("The right answer is %s", ans);
+    }
 
     getchar();
 }
