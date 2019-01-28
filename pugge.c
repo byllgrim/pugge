@@ -1,4 +1,3 @@
-/* This code is licensed under the Unlicense; see LICENSE for details. */
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,9 +52,9 @@ set_question_text(char *src, struct question *q)
     len = strlen(src);
     q->text = xcalloc(len, sizeof(char));
 
-    strncpy(q->text, src, len); /* TODO check return value? */
+    strncpy(q->text, src, len);
     q->text[len - 1] = '\0';
-    /* TODO export this function? */
+
 }
 
 static void
@@ -80,7 +79,7 @@ append_answer(char *src, struct question *q)
     }
 
     a->text = xcalloc(len, sizeof(char));
-    strncpy(a->text, src, len); /* TODO check return value? */
+    strncpy(a->text, src, len);
     a->text[len - 1] = '\0';
 }
 
@@ -109,13 +108,12 @@ get_choice(void)
     i = atoi(s);
     free(s);
     return i;
-    /* TODO is this messy? */
 }
 
 static void
 verify_choice(struct question *q, int c)
 {
-    while (!c /* TODO || c > max */) {
+    while (!c ) {
         printf("Please choose a valid number\n");
         c = get_choice();
     }
@@ -125,7 +123,7 @@ verify_choice(struct question *q, int c)
     else
         printf("The right answer is TODO");
 
-    getchar(); /* press enter to continue */
+    getchar();
 }
 
 static void
@@ -146,14 +144,14 @@ start_quiz(struct question *q)
 struct question *
 parse_line(char *line, struct question *q)
 {
-    if (line[0] == '#') /* ignore comment lines beginning with # */
+    if (line[0] == '#')
         return q;
 
     if (line[0] == '\n') {
-        if (q->text) /* current question is done */
+        if (q->text)
             return q->next = xcalloc(1, sizeof(q));
         else
-            return q; /* waiting for question */
+            return q;
     }
 
     if (!q->text)
@@ -207,11 +205,5 @@ main(int argc, char **argv)
     q = parse_all_files(argv + 1);
     start_quiz(q);
 
-    /* TODO present correct answer */
-    /* TODO optional randomization of question order */
-    /* TODO randomization of answer order */
-    /* TODO allow #comments in answer text? */
-    /* TODO print score */
-
-    return 0;
+    return EXIT_SUCCESS;
 }
