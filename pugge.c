@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-enum {MAX_LEN = 512}; /* maximum length of string buffer TODO rename resize */
+enum {RDBUFLEN = 512};
 
 struct question {
 	char            *text;    /* text of the question */
@@ -173,8 +173,8 @@ parse_file(char *filename, struct question *q)
 	if (!file)
 		kill_program("file not found: %s\n", filename);
 
-	buffer = xcalloc(MAX_LEN, sizeof(char));
-	while (fgets(buffer, MAX_LEN, file))
+	buffer = xcalloc(RDBUFLEN, sizeof(char));
+	while (fgets(buffer, RDBUFLEN, file))
 		q = parse_line(buffer, q);
 
 	free(buffer);
