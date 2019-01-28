@@ -4,10 +4,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "questions.h"
-#include "answers.h"
-#include "files.h"
-#include "utils.h"
+enum {MAX_LEN = 512}; /* maximum length of string buffer TODO rename resize */
+
+struct question {
+	char            *text;    /* text of the question */
+	struct answer   *answers; /* start node of linked list of answers */
+	struct question *next;    /* next question */
+};
+
+struct answer {
+	char          *text;    /* answer text */
+	char           correct; /* true if correct answer */
+	struct answer *next;    /* next answer in linked list */
+};
 
 void
 kill_program(char *format, ...)
