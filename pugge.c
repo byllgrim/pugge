@@ -133,12 +133,13 @@ verify_choice(struct question *q, int c)
     }
 
     if (get_answer(q, c)->correct) {
-        printf("Congratulations!!!!");
+        printf("CORRECT!\n");
     } else {
         ans = get_correct(q);
-        printf("The right answer is %s", ans);
+        printf("WRONG! Correct answer was '%s'\n", ans);
     }
 
+    printf("(press enter)");
     getchar();
 }
 
@@ -149,7 +150,7 @@ start_quiz(struct question *q)
     int i, c;
 
     for (; q; q=q->next) {
-        printf("%s\n", q->text);
+        printf("\n%s\n", q->text);
         for (i = 1, a = q->answers; a; a = a->next, i++)
             printf("%d) %s\n", i, a->text);
         c = get_choice();
